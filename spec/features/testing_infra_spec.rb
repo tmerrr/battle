@@ -1,13 +1,15 @@
 require './app'
 
 feature 'Testing Infrastructure' do
-
   scenario 'Returns player names' do
-    visit('/')
-    fill_in('player1', with: 'cristhian')
-    fill_in('player2', with: 'tom')
-    click_button('Submit')
+    sign_in_and_play
     expect(page).to have_content 'cristhian'
     expect(page).to have_content 'tom'
+  end
+
+  scenario 'Players have hit points' do
+    sign_in_and_play
+    expect(page).to have_content 'P1 HP = 100'
+    expect(page).to have_content 'P2 HP = 100'
   end
 end

@@ -2,6 +2,8 @@ require 'sinatra/base'
 
 class MyApp < Sinatra::Base
   enable :sessions
+  set :session_secret, 'key'
+
 
   get '/' do
     erb :form
