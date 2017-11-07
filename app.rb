@@ -2,9 +2,9 @@ require 'sinatra/base'
 
 class MyApp < Sinatra::Base
 
-  get '/' do
-    'hello'
-  end
+    get '/' do
+      'Testing Infrastructure'
+    end
 
   get '/battle' do
     'Hello Battle!'
