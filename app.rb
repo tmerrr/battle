@@ -1,14 +1,23 @@
 require 'sinatra/base'
 
 class MyApp < Sinatra::Base
+  enable :sessions
 
   get '/' do
     erb :form
   end
 
-  post '/battle' do
-    @player1 = params[:player1]
-    @player2 = params[:player2]
+  post '/names' do
+    p params
+    session[:player1] = params[:player1]
+    session[:player2] = params[:player2]
+    redirect '/battle'
+  end
+
+  get '/battle' do
+    p session
+    @player1 = session[:player1]
+    @player2 = session[:player2]
     erb :battle
   end
 
