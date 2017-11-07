@@ -1,8 +1,13 @@
 require './app'
 
 feature 'Testing Infrastructure' do
-  scenario 'Can run app and check page content' do
+
+  scenario 'Returns player names' do
     visit('/')
-    expect(page).to have_content 'Testing Infrastructure'
+    fill_in('player1', with: 'cristhian')
+    fill_in('player2', with: 'tom')
+    click_button('Submit')
+    expect(page).to have_content 'cristhian'
+    expect(page).to have_content 'tom'
   end
 end
