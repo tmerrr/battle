@@ -10,17 +10,20 @@ class MyApp < Sinatra::Base
   end
 
   post '/names' do
-    p params
     session[:player1] = params[:player1]
     session[:player2] = params[:player2]
     redirect '/battle'
   end
 
   get '/battle' do
-    p session
+    @p1_attack = false
     @player1 = session[:player1]
     @player2 = session[:player2]
     erb :battle
+  end
+
+  post '/player1attack' do
+    @p1_attack = true
   end
 
   run! if app_file == $0
