@@ -1,11 +1,18 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/stylesheet.css" />
+  </head>
 
-<h1> Player 1 <%= @player1 %> VS Player 2 <%= @player2 %><h1>
+  <h1> Player 1 <%= @player1 %> vs Player 2 <%= @player2 %></h1>
 
-P1 HP = 100 ------- P2 HP = 100
+  <h3>P1 HP = 100 ------- P2 HP = 100</h3>
 
-<br><br>
-<form>
-<button type=submit>Attack Player 2</button>
-</form>
+  <br><br>
 
-Player 1 Attacked Player 2
+  <form>
+    <button id="p1_attack_button" type="button" name="Attack Player 2" onclick="document.getElementById('p1_attack').innerHTML = 'P1 Attack'">Attack Player 2</button>
+  </form>
+
+  <p id="p1_attack"></p>
+
+</html>
