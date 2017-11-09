@@ -3,16 +3,30 @@
     <link rel="stylesheet" type="text/css" href="/stylesheet.css" />
   </head>
 
-  <h1> Player 1 <%= @player1 %> vs Player 2 <%= @player2 %></h1>
+  <body>
 
-  <h3>P1 HP = 100 ------- P2 HP = 100</h3>
+    <div>
+      <h1> <%= @player1_name %>
+      <h3> HP: <%= @p1hp %> </h3>
+      <form>
+        <button type="button" id="p1_attack_button"
+          onclick="document.getElementById('battle_updates').innerHTML =
+          '<%= @player1_name %> attacked <%= @player2_name %>'">
+          Attack Player 2
+        </button>
+      </form>
+    </div>
 
-  <br><br>
+    <div>
+      <text>Updates: <p id="battle_updates"></p> </text>
+    </div>
 
-  <form>
-    <button id="p1_attack_button" type="button" name="Attack Player 2" onclick="document.getElementById('p1_attack').innerHTML = 'P1 Attack'">Attack Player 2</button>
-  </form>
+    <div>
+      <h1> <%= @player2_name %> </h1>
+      <h3> HP: <%= @p2hp %> </h3>
+    </div>
 
-  <p id="p1_attack"></p>
+
+  </body>
 
 </html>

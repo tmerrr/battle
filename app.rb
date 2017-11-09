@@ -1,6 +1,7 @@
 require 'sinatra/base'
+require './lib/player'
 
-class MyApp < Sinatra::Base
+class Battle < Sinatra::Base
   enable :sessions
   set :session_secret, 'key'
 
@@ -9,14 +10,21 @@ class MyApp < Sinatra::Base
   end
 
   post '/get_names' do
-    session[:player1] = params[:player1]
-    session[:player2] = params[:player2]
+    # session[:player1] = Player.new(params[:player1])
+    # session[:player2] = Player.new(params[:player2])
+    $player1      = Player.new(params[:player1])
+    $player2      = Player.new(params[:player2])
+    session[:hp]  = 100
     redirect '/battle'
   end
 
   get '/battle' do
-    @player1 = session[:player1]
-    @player2 = session[:player2]
+    # @player1  = session[:player1]
+    # @player2  = session[:player2]
+    @player1_name = $player1.name
+    @player2_name = $player2.name
+    @p1hp     = session[:hp]
+    @p2hp     = session[:hp]
     erb :battle
   end
 
